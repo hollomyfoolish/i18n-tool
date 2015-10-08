@@ -1,0 +1,23 @@
+doctype xml
+slim(slimEd='1.0', xmlns='www.sap.com/slim')
+    header
+        locale
+            develLc EN
+            contentLc= language
+        objType line
+        collection= collectionName
+        domain= domain
+        contentName= contentName
+        description
+        | 
+        |<defaults>
+        |    <maxL>255</maxL>
+        |</defaults>
+        workflow
+            contacts
+                developer i069498
+    body
+        loGrp(grpClass='textType', grpName='XTXT')
+            each val, key in i18n
+                lo(tK= key, maxL='255')
+                    loC= val

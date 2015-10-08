@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>I18N Tool</title>
+        <link rel="stylesheet" type="text/css" href="./style/main.css">
+    </head>
+    <body>
+        <div id="main">
+            <form action="">
+                <div class="form-title"><label for="">Parameters</label></div>
+                <ul  class="form-layout">
+                    <li>
+                        <div class="label"><label for="">Source Folder</label></div>
+                        <div class="field not-allow-blank"><input id="srcFolder" type="text" placeholder="Please input..."></div>
+                    </li>
+                    <li>
+                        <div class="label"><label for="">Destination Folder</label></div>
+                        <div class="field not-allow-blank"><input id="destFolder" type="text" placeholder="Please input..."></div>
+                    </li>
+                    <li>
+                        <div class="label"><label for="">Translation Type</label></div>
+                        <div class="field"><input type="radio" name="translationType" value="XmlToJs" checked><label>Xml To Js</label><input type="radio" name="translationType" value="JsToXml" style="margin-left: 40px;"><label>Js To Xml</label></div>
+                    </li>
+                    <li class="jsToXml">
+                        <div class="label"><label for="">Content Name</label></div>
+                        <div class="field not-allow-blank"><input id="contentName" type="text" placeholder="Please input..."></div>
+                    </li>
+                    <li class="jsToXml">
+                        <div class="label"><label for="">Collection Name</label></div>
+                        <div class="field not-allow-blank"><input id="collectionName" type="text" placeholder="Please input..."></div>
+                    </li>
+                    <li style="margin-top: 50px;">
+                        <div class="label"><label for="">&nbsp;</label></div>
+                        <div class="field buttons"><button id="submit" type="submit">submit</button><button type="reset">reset</button></div>
+                    </li>
+                </ul>
+            </form>
+            <div id="message"></div>
+            <!--
+            <div id="dragArea">
+                <div id="srcFiles">
+                    <label>Drop files here</label>
+                </div>
+                <div id="destFolder"></div>
+            </div>
+            -->
+        </div>
+        <script type="text/javascript" src="./js/lib/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="./js/main.js"></script>
+    </body>
+</html>

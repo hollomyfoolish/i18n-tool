@@ -1,0 +1,14 @@
+{
+  "name": "i18n-tool",
+  "window": {
+    "width": 800,
+    "height": 600,
+    "toolbar": true
+  },
+  "main": "index.html",
+  "dependencies": {
+    "jade": "^1.11.0",
+    "jquery": "^2.1.4",
+    "xmldom": "^0.1.19"
+  }
+}
