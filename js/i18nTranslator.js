@@ -13,11 +13,20 @@ var DOMParser = require('xmldom').DOMParser,
     path = require('path'),
     console = window?window.console:global.console;
 
-function Translator(srcDir, destDir, contentName, collectionName){
+var I18N_MAPPER = {
+    "6N.js": "enGB.js",
+    "0S.js": "esCO.js",
+    "1P.js": "ptPT.js",
+    "HE.js": "IW.js",
+    "ZF.js": "zhTW.js"
+};
+
+function Translator(srcDir, destDir, contentName, collectionName, projectName){
     this.srcDir = srcDir;
     this.destDir = destDir;
     this.contentName = contentName;
     this.collectionName = collectionName;
+    this.projectName = projectName;
 }
 
 Translator.prototype = {
@@ -82,7 +91,7 @@ Xml2JsTranslator.prototype = Object.create(Translator.prototype, {
                 var nameParts = srcFileName.split('_'),
                     jsFileName = nameParts[nameParts.length - 1].replace(XML_PATTERN, '.js');
                     i18nStr = ['/*\r\n',
-                               ' * SAP Business One Demand Planning UI Localized Resources for ' + jsFileName.substring(0, jsFileName.length-3) + '\r\n',
+                               ' * SAP Business One '+ me.projectName +' UI Localized Resources for ' + jsFileName.substring(0, jsFileName.length-3) + '\r\n',
                                ' */\r\n',
                                'var i18n = {\r\n'],
                     indent = '    ';
@@ -97,6 +106,9 @@ Xml2JsTranslator.prototype = Object.create(Translator.prototype, {
                 });
                 i18nStr[i18nStr.length - 1] = '\r\n};';
                 me.writeDestFile(jsFileName, i18nStr.join(''));
+                if(I18N_MAPPER[jsFileName]){
+                    me.writeDestFile(I18N_MAPPER[jsFileName], i18nStr.join(''));
+                }
             });
         }
     },

@@ -40,8 +40,10 @@
     main.find('input[name="translationType"]').change(function(event) {
         if($(this).val() === 'XmlToJs'){
             $('.jsToXml').hide();
+            $('.xmlToJs').show();
         }else{
             $('.jsToXml').show();
+            $('.xmlToJs').hide();
         }
     });
 
@@ -60,7 +62,8 @@
     $('#submit').click(function(event) {
         event.stopPropagation();
         event.preventDefault();
-        var srcDir = $('#srcFolder').val(),
+        var projectName = $('#projectName').val(),
+            srcDir = $('#srcFolder').val(),
             destDir = $('#destFolder').val(),
             contentName = $('#contentName').val(),
             collectionName = $('#collectionName').val(),
@@ -69,9 +72,9 @@
 
         switch(translatorType){
             case 'XmlToJs':
-                return new translator.Xml2JsTranslator(srcDir, destDir, contentName).translate();
+                return new translator.Xml2JsTranslator(srcDir, destDir, contentName, null, projectName).translate();
             case 'JsToXml':
-                return new translator.Js2XmlTranslator(srcDir, destDir, contentName, collectionName).translate();
+                return new translator.Js2XmlTranslator(srcDir, destDir, contentName, collectionName, null).translate();
             default:
                 return;
         }
